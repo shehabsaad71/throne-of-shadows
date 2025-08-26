@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1g2221ofnb4w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_afbyi"]
+font_size = 128
+font_color = Color(0.000693898, 0.000693898, 0.000693898, 1)
+
+[node name="win" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(28.92, 16.32)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 273.0
+offset_top = 227.0
+offset_right = 850.0
+offset_bottom = 402.0
+scale = Vector2(0.991032, 1)
+text = "You Win!!"
+label_settings = SubResource("LabelSettings_afbyi")

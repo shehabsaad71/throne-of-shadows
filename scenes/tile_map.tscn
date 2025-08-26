@@ -1,0 +1,67 @@
+[gd_scene load_steps=20 format=3 uid="uid://b2ih0e3jyr27u"]
+
+[ext_resource type="Texture2D" uid="uid://dr4juskxo7wl" path="res://assets/block.png" id="1_e185q"]
+[ext_resource type="PackedScene" uid="uid://c3rb3g1qcb6pq" path="res://scenes/turret.tscn" id="2_gr3ea"]
+[ext_resource type="PackedScene" uid="uid://l0fc723m6sp6" path="res://scenes/player.tscn" id="2_r2grc"]
+[ext_resource type="PackedScene" uid="uid://daa10qh4n4e5j" path="res://scenes/posion.tscn" id="3_gr3ea"]
+[ext_resource type="PackedScene" uid="uid://cr05jp4far5e" path="res://scenes/rbutton.tscn" id="4_q7jiu"]
+[ext_resource type="PackedScene" uid="uid://bk2qv6273rpoj" path="res://scenes/rposion.tscn" id="5_alkp3"]
+[ext_resource type="PackedScene" uid="uid://16xbvd07lvtn" path="res://scenes/spike.tscn" id="6_llxve"]
+[ext_resource type="PackedScene" uid="uid://b1tsgwl2yiir5" path="res://scenes/trap.tscn" id="7_350dj"]
+[ext_resource type="PackedScene" uid="uid://dqugc8e0guibt" path="res://scenes/winds.tscn" id="8_58nd1"]
+[ext_resource type="PackedScene" uid="uid://bjq3avini2hji" path="res://scenes/checkpoint.tscn" id="9_fm0bw"]
+[ext_resource type="PackedScene" uid="uid://cjml7j2k0jhcc" path="res://scenes/camera.tscn" id="10_gr3ea"]
+[ext_resource type="PackedScene" uid="uid://dtf32rllhyryc" path="res://scenes/coin.tscn" id="10_wwfew"]
+[ext_resource type="PackedScene" uid="uid://bfjqmwudb7pin" path="res://scenes/door.tscn" id="11_gvvpr"]
+[ext_resource type="PackedScene" uid="uid://veg2gbwh3l3" path="res://scenes/fan.tscn" id="12_kk51x"]
+[ext_resource type="PackedScene" uid="uid://ry6gas87135s" path="res://scenes/gem.tscn" id="13_32ke5"]
+[ext_resource type="PackedScene" uid="uid://re33bfyy88ar" path="res://scenes/laser.tscn" id="14_24q3t"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r2grc"]
+texture = ExtResource("1_e185q")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_gr3ea"]
+scenes/1/scene = ExtResource("2_gr3ea")
+scenes/2/scene = ExtResource("10_gr3ea")
+scenes/4/scene = ExtResource("9_fm0bw")
+scenes/5/scene = ExtResource("10_wwfew")
+scenes/6/scene = ExtResource("11_gvvpr")
+scenes/7/scene = ExtResource("12_kk51x")
+scenes/8/scene = ExtResource("13_32ke5")
+scenes/9/scene = ExtResource("14_24q3t")
+scenes/11/scene = ExtResource("2_r2grc")
+scenes/12/scene = ExtResource("3_gr3ea")
+scenes/13/scene = ExtResource("4_q7jiu")
+scenes/14/scene = ExtResource("5_alkp3")
+scenes/15/scene = ExtResource("6_llxve")
+scenes/16/scene = ExtResource("7_350dj")
+scenes/17/scene = ExtResource("8_58nd1")
+
+[sub_resource type="TileSet" id="TileSet_drlp6"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_r2grc")
+sources/1 = SubResource("TileSetScenesCollectionSource_gr3ea")
+
+[node name="TileMap" type="TileMap"]
+position = Vector2(-214, 6)
+tile_set = SubResource("TileSet_drlp6")
+format = 2

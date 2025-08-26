@@ -1,0 +1,89 @@
+[gd_scene load_steps=23 format=3 uid="uid://dj74abg1piul7"]
+
+[ext_resource type="Script" uid="uid://dmqfv3rr3yao3" path="res://scripts/levle_5.gd" id="1_h717f"]
+[ext_resource type="PackedScene" uid="uid://b2ih0e3jyr27u" path="res://scenes/tile_map.tscn" id="2_l8eod"]
+[ext_resource type="Texture2D" uid="uid://dr4juskxo7wl" path="res://assets/block.png" id="3_sfnul"]
+[ext_resource type="PackedScene" uid="uid://c3rb3g1qcb6pq" path="res://scenes/turret.tscn" id="4_fea5r"]
+[ext_resource type="PackedScene" uid="uid://l0fc723m6sp6" path="res://scenes/player.tscn" id="5_vm1kt"]
+[ext_resource type="PackedScene" uid="uid://daa10qh4n4e5j" path="res://scenes/posion.tscn" id="6_wnnhf"]
+[ext_resource type="PackedScene" uid="uid://cr05jp4far5e" path="res://scenes/rbutton.tscn" id="7_ahsud"]
+[ext_resource type="PackedScene" uid="uid://bk2qv6273rpoj" path="res://scenes/rposion.tscn" id="8_iu1q5"]
+[ext_resource type="PackedScene" uid="uid://16xbvd07lvtn" path="res://scenes/spike.tscn" id="9_orjhg"]
+[ext_resource type="PackedScene" uid="uid://b1tsgwl2yiir5" path="res://scenes/trap.tscn" id="10_3j2bn"]
+[ext_resource type="PackedScene" uid="uid://dqugc8e0guibt" path="res://scenes/winds.tscn" id="11_lolfx"]
+[ext_resource type="PackedScene" uid="uid://bjq3avini2hji" path="res://scenes/checkpoint.tscn" id="12_004to"]
+[ext_resource type="PackedScene" uid="uid://dtf32rllhyryc" path="res://scenes/coin.tscn" id="13_e0v1o"]
+[ext_resource type="PackedScene" uid="uid://bfjqmwudb7pin" path="res://scenes/door.tscn" id="14_idth2"]
+[ext_resource type="PackedScene" uid="uid://veg2gbwh3l3" path="res://scenes/fan.tscn" id="15_gg75w"]
+[ext_resource type="PackedScene" uid="uid://ry6gas87135s" path="res://scenes/gem.tscn" id="16_n1pyt"]
+[ext_resource type="PackedScene" uid="uid://re33bfyy88ar" path="res://scenes/laser.tscn" id="17_t4lb3"]
+[ext_resource type="PackedScene" uid="uid://cjml7j2k0jhcc" path="res://scenes/camera.tscn" id="18_l8eod"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ovmp3"]
+texture = ExtResource("3_sfnul")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_hh20c"]
+scenes/1/scene = ExtResource("4_fea5r")
+scenes/2/scene = ExtResource("18_l8eod")
+scenes/4/scene = ExtResource("12_004to")
+scenes/5/scene = ExtResource("13_e0v1o")
+scenes/6/scene = ExtResource("14_idth2")
+scenes/7/scene = ExtResource("15_gg75w")
+scenes/8/scene = ExtResource("16_n1pyt")
+scenes/9/scene = ExtResource("17_t4lb3")
+scenes/11/scene = ExtResource("5_vm1kt")
+scenes/12/scene = ExtResource("6_wnnhf")
+scenes/13/scene = ExtResource("7_ahsud")
+scenes/14/scene = ExtResource("8_iu1q5")
+scenes/15/scene = ExtResource("9_orjhg")
+scenes/16/scene = ExtResource("10_3j2bn")
+scenes/17/scene = ExtResource("11_lolfx")
+
+[sub_resource type="TileSet" id="TileSet_3sukt"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ovmp3")
+sources/1 = SubResource("TileSetScenesCollectionSource_hh20c")
+
+[sub_resource type="LabelSettings" id="LabelSettings_h717f"]
+font_size = 128
+
+[node name="levle_5" type="Node2D"]
+position = Vector2(10, 0)
+script = ExtResource("1_h717f")
+
+[node name="TileMap" parent="." instance=ExtResource("2_l8eod")]
+tile_set = SubResource("TileSet_3sukt")
+layer_0/tile_data = PackedInt32Array(131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0)
+
+[node name="player" parent="." instance=ExtResource("5_vm1kt")]
+
+[node name="door" parent="." instance=ExtResource("14_idth2")]
+z_index = -1
+position = Vector2(366, 92)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 197.0
+offset_top = -7.0
+offset_right = 270.0
+offset_bottom = 168.0
+text = "5"
+label_settings = SubResource("LabelSettings_h717f")

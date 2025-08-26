@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcm420kk5o403"]
+
+[ext_resource type="Texture2D" uid="uid://oas8o1v34kti" path="res://assets/turret-with.png" id="1_cl0br"]
+[ext_resource type="Texture2D" uid="uid://dycdwcctxjnt5" path="res://assets/turret-without.png" id="2_n2mjm"]
+
+[sub_resource type="GDScript" id="GDScript_cl0br"]
+script/source = "extends Area2D
+
+var laser = false
+
+func _ready() -> void:
+	while true:
+		$AnimatedSprite2D.play(\"with\")
+		laser = true
+		await get_tree().create_timer(2).timeout
+		$AnimatedSprite2D.play(\"without\")
+		laser = false
+		await get_tree().create_timer(2).timeout
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group(\"player\") and laser:
+		body.live -= 1
+"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n2mjm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cl0br")
+}],
+"loop": true,
+"name": &"with",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_n2mjm")
+}],
+"loop": true,
+"name": &"without",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hr4wj"]
+size = Vector2(24, 487)
+
+[node name="lturret" type="Area2D"]
+script = SubResource("GDScript_cl0br")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n2mjm")
+animation = &"without"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -123.5)
+shape = SubResource("RectangleShape2D_hr4wj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

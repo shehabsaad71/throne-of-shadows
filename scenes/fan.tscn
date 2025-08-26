@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://veg2gbwh3l3"]
+
+[ext_resource type="Script" uid="uid://c1q55y3s0j8db" path="res://scripts/fan.gd" id="1_g60l1"]
+[ext_resource type="Texture2D" uid="uid://dwp2xm4m5yxt3" path="res://assets/fan.png" id="2_4vkey"]
+[ext_resource type="AudioStream" uid="uid://bowmpfp3xqjy3" path="res://assets/sounds/winds.mp3" id="3_h3fxe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kx7x3"]
+size = Vector2(52, 317)
+
+[sub_resource type="Animation" id="Animation_m8rtu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_01x3p"]
+resource_name = "rotate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k0fal"]
+_data = {
+&"RESET": SubResource("Animation_m8rtu"),
+&"rotate": SubResource("Animation_01x3p")
+}
+
+[node name="fan" type="Area2D"]
+script = ExtResource("1_g60l1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, -4)
+texture = ExtResource("2_4vkey")
+centered = false
+offset = Vector2(-62, -58)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -138.5)
+shape = SubResource("RectangleShape2D_kx7x3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_k0fal")
+}
+autoplay = "rotate"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_h3fxe")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

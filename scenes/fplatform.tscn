@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5hdp7miomy1w"]
+
+[ext_resource type="Script" uid="uid://cb6jsh48avem4" path="res://scripts/fplatform.gd" id="1_gfouv"]
+[ext_resource type="Texture2D" uid="uid://s6wrenkjpbmi" path="res://assets/fplatform.png" id="1_jckup"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_14a4m"]
+size = Vector2(94, 55)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yokld"]
+size = Vector2(94, 4)
+
+[sub_resource type="Animation" id="Animation_idtvr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c3cqm"]
+resource_name = "zigzag"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 5), Vector2(0, 0), Vector2(0, 5), Vector2(0, 0), Vector2(0, 5), Vector2(0, 0), Vector2(0, 200), Vector2(0, 0), Vector2(0, 5), Vector2(0, 0), Vector2(0, 200)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_embth"]
+_data = {
+&"RESET": SubResource("Animation_idtvr"),
+&"zigzag": SubResource("Animation_c3cqm")
+}
+
+[node name="fplatform" type="Area2D"]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_gfouv")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_jckup")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_14a4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -28)
+shape = SubResource("RectangleShape2D_yokld")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_embth")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

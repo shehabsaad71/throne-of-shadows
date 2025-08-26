@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3r0woelvtv7f"]
+
+[ext_resource type="Texture2D" uid="uid://cyhi88rfem4ck" path="res://assets/water.png" id="1_bdk6y"]
+[ext_resource type="Script" uid="uid://ch4yl2fxxaqsv" path="res://scripts/water.gd" id="1_s3811"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3811"]
+atlas = ExtResource("1_bdk6y")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1n2c"]
+atlas = ExtResource("1_bdk6y")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewrsg"]
+atlas = ExtResource("1_bdk6y")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fiwy5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3811")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1n2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewrsg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgdjl"]
+size = Vector2(20, 24)
+
+[node name="water" type="Area2D"]
+visible = false
+position = Vector2(167, 210)
+scale = Vector2(8, 8)
+script = ExtResource("1_s3811")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fiwy5")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(14, -5)
+shape = SubResource("RectangleShape2D_xgdjl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(5, 22)
+shape = SubResource("RectangleShape2D_xgdjl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

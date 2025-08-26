@@ -1,0 +1,65 @@
+[gd_scene load_steps=13 format=3 uid="uid://dtf32rllhyryc"]
+
+[ext_resource type="Script" uid="uid://lxbam7pteyh2" path="res://scripts/coin.gd" id="1_kfxoj"]
+[ext_resource type="Texture2D" uid="uid://cxv3qnl4dxsbk" path="res://assets/coin/Gold_Coin1.png" id="1_xmuha"]
+[ext_resource type="Texture2D" uid="uid://bn2y743a38g2d" path="res://assets/coin/Gold_Coin2.png" id="2_kfxoj"]
+[ext_resource type="Texture2D" uid="uid://d2pjm1wxlqd1h" path="res://assets/coin/Gold_Coin3.png" id="3_jsmju"]
+[ext_resource type="Texture2D" uid="uid://1fbx0u81oryn" path="res://assets/coin/Gold_Coin4.png" id="4_s0mny"]
+[ext_resource type="Texture2D" uid="uid://c6hllpjeibe1u" path="res://assets/coin/Gold_Coin5.png" id="5_7cc30"]
+[ext_resource type="Texture2D" uid="uid://dw2dfdbyaec83" path="res://assets/coin/Gold_Coin6.png" id="6_rojmm"]
+[ext_resource type="Texture2D" uid="uid://nrjvebjfby8b" path="res://assets/coin/Gold_Coin7.png" id="7_ls27i"]
+[ext_resource type="Texture2D" uid="uid://c324tf62si7xx" path="res://assets/coin/Gold_Coin8.png" id="8_ssuvv"]
+[ext_resource type="AudioStream" uid="uid://cr1j6e7bdju4u" path="res://assets/sounds/coin.mp3" id="10_jsmju"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6jg3o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xmuha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kfxoj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jsmju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_s0mny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7cc30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rojmm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ls27i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ssuvv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmuha"]
+size = Vector2(99, 99)
+
+[node name="coin" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_kfxoj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6jg3o")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_xmuha")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_jsmju")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

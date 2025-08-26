@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bk2qv6273rpoj"]
+
+[ext_resource type="Texture2D" uid="uid://ksvd2nbdr0du" path="res://assets/rposion.png" id="1_541in"]
+[ext_resource type="Script" uid="uid://24rl03vhdr3q" path="res://scripts/rposion.gd" id="1_grlml"]
+[ext_resource type="FontFile" uid="uid://c4btunrphiwtm" path="res://assets/font.ttf" id="3_gd3uw"]
+[ext_resource type="AudioStream" uid="uid://45c1q41dp350" path="res://assets/sounds/posion.mp3" id="4_0erfe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_541in"]
+size = Vector2(65, 65)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0erfe"]
+font = ExtResource("3_gd3uw")
+font_size = 64
+font_color = Color(0.917647, 0.596078, 0, 1)
+outline_size = 16
+outline_color = Color(0.00184107, 0.00184107, 0.00184107, 1)
+
+[node name="rposion" type="Area2D"]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_grlml")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_541in")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_541in")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 1049.0
+offset_top = 427.0
+offset_right = 1169.0
+offset_bottom = 531.0
+text = "59"
+label_settings = SubResource("LabelSettings_0erfe")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_0erfe")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

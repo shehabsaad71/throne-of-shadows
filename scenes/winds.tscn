@@ -1,0 +1,165 @@
+[gd_scene load_steps=21 format=3 uid="uid://dqugc8e0guibt"]
+
+[ext_resource type="Texture2D" uid="uid://bo4bjvivr8f5v" path="res://assets/winds/W401-1.png" id="1_ua8td"]
+[ext_resource type="Script" uid="uid://bl7y88owmd55p" path="res://scripts/winds.gd" id="1_wc7vh"]
+[ext_resource type="Texture2D" uid="uid://b17nmk4br1mj1" path="res://assets/winds/W401-2.png" id="2_wc7vh"]
+[ext_resource type="Texture2D" uid="uid://pdcpn64bi0oi" path="res://assets/winds/W401-3.png" id="3_rtm6o"]
+[ext_resource type="Texture2D" uid="uid://y0xw4pn0mc03" path="res://assets/winds/W401-4.png" id="4_0ouvg"]
+[ext_resource type="Texture2D" uid="uid://la87n8e8k25q" path="res://assets/winds/W401-5.png" id="5_8dtxu"]
+[ext_resource type="Texture2D" uid="uid://dulcdixm1yi1o" path="res://assets/winds/W401-6.png" id="6_k6vsw"]
+[ext_resource type="Texture2D" uid="uid://d3omje2kqqhpx" path="res://assets/winds/W401-7.png" id="7_f53ff"]
+[ext_resource type="Texture2D" uid="uid://d253f35oo16l5" path="res://assets/winds/W401-8.png" id="8_r5wn1"]
+[ext_resource type="Texture2D" uid="uid://pve5urgkwmwg" path="res://assets/winds/W401-9.png" id="9_2l56r"]
+[ext_resource type="Texture2D" uid="uid://b0suw7pos52cs" path="res://assets/winds/W401-10.png" id="10_sp68v"]
+[ext_resource type="Texture2D" uid="uid://d10yop5uegoft" path="res://assets/winds/W401-11.png" id="11_rxvl6"]
+[ext_resource type="Texture2D" uid="uid://bjoogwatfj23p" path="res://assets/winds/W401-12.png" id="12_dli6p"]
+[ext_resource type="Texture2D" uid="uid://burtqgrm34j0r" path="res://assets/winds/W401-13.png" id="13_c5l3i"]
+[ext_resource type="Texture2D" uid="uid://b2r2iwmtjga2x" path="res://assets/winds/W401-14.png" id="14_82why"]
+[ext_resource type="Texture2D" uid="uid://di6u11flmd0qo" path="res://assets/winds/W401-15.png" id="15_s5lt3"]
+[ext_resource type="Texture2D" uid="uid://7erv0h85x5cy" path="res://assets/winds/W401-16.png" id="16_ok6jq"]
+[ext_resource type="AudioStream" uid="uid://bowmpfp3xqjy3" path="res://assets/sounds/winds.mp3" id="18_rtm6o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rldkb"]
+size = Vector2(1337, 617)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vjt52"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ua8td")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wc7vh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rtm6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0ouvg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8dtxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_k6vsw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f53ff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_r5wn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2l56r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_sp68v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_rxvl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_dli6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_c5l3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_82why")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_s5lt3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ok6jq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="winds" type="Area2D"]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_wc7vh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(579.5, 298.5)
+shape = SubResource("RectangleShape2D_rldkb")
+
+[node name="sprites" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="sprites"]
+sprite_frames = SubResource("SpriteFrames_vjt52")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.901514
+flip_h = true
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="sprites"]
+position = Vector2(559, 16)
+sprite_frames = SubResource("SpriteFrames_vjt52")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.138891
+flip_h = true
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="sprites"]
+position = Vector2(0, 226)
+sprite_frames = SubResource("SpriteFrames_vjt52")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.99924
+flip_h = true
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="sprites"]
+position = Vector2(643, 223)
+sprite_frames = SubResource("SpriteFrames_vjt52")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.0862892
+flip_h = true
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="sprites"]
+position = Vector2(9, 464)
+sprite_frames = SubResource("SpriteFrames_vjt52")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.496437
+flip_h = true
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="sprites"]
+position = Vector2(640, 461)
+sprite_frames = SubResource("SpriteFrames_vjt52")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.518904
+flip_h = true
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="sprites"]
+position = Vector2(1051, 455)
+sprite_frames = SubResource("SpriteFrames_vjt52")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.302768
+flip_h = true
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="sprites"]
+position = Vector2(1051, 198)
+sprite_frames = SubResource("SpriteFrames_vjt52")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.400123
+flip_h = true
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="sprites"]
+position = Vector2(1051, 29)
+sprite_frames = SubResource("SpriteFrames_vjt52")
+animation = &"idle"
+autoplay = "idle"
+flip_h = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_rtm6o")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

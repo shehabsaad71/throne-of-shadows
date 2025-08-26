@@ -1,0 +1,86 @@
+[gd_scene load_steps=22 format=3 uid="uid://dmix2t7tpwp0o"]
+
+[ext_resource type="PackedScene" uid="uid://b2ih0e3jyr27u" path="res://scenes/tile_map.tscn" id="1_josfm"]
+[ext_resource type="Script" uid="uid://1ftx3wcbrnrl" path="res://scripts/level_3.gd" id="1_lgrx1"]
+[ext_resource type="Texture2D" uid="uid://dr4juskxo7wl" path="res://assets/block.png" id="2_lgrx1"]
+[ext_resource type="PackedScene" uid="uid://c3rb3g1qcb6pq" path="res://scenes/turret.tscn" id="3_fhpes"]
+[ext_resource type="PackedScene" uid="uid://l0fc723m6sp6" path="res://scenes/player.tscn" id="4_vmg1d"]
+[ext_resource type="PackedScene" uid="uid://daa10qh4n4e5j" path="res://scenes/posion.tscn" id="5_1nwmf"]
+[ext_resource type="PackedScene" uid="uid://cr05jp4far5e" path="res://scenes/rbutton.tscn" id="6_5f5xw"]
+[ext_resource type="PackedScene" uid="uid://bk2qv6273rpoj" path="res://scenes/rposion.tscn" id="7_o3ttr"]
+[ext_resource type="PackedScene" uid="uid://16xbvd07lvtn" path="res://scenes/spike.tscn" id="8_kdsi4"]
+[ext_resource type="PackedScene" uid="uid://b1tsgwl2yiir5" path="res://scenes/trap.tscn" id="9_kva3v"]
+[ext_resource type="PackedScene" uid="uid://dqugc8e0guibt" path="res://scenes/winds.tscn" id="10_jql0x"]
+[ext_resource type="PackedScene" uid="uid://bjq3avini2hji" path="res://scenes/checkpoint.tscn" id="11_do6pa"]
+[ext_resource type="PackedScene" uid="uid://dtf32rllhyryc" path="res://scenes/coin.tscn" id="12_n8qcm"]
+[ext_resource type="PackedScene" uid="uid://bfjqmwudb7pin" path="res://scenes/door.tscn" id="13_aey3y"]
+[ext_resource type="PackedScene" uid="uid://veg2gbwh3l3" path="res://scenes/fan.tscn" id="14_k0dme"]
+[ext_resource type="PackedScene" uid="uid://ry6gas87135s" path="res://scenes/gem.tscn" id="15_o5em7"]
+[ext_resource type="PackedScene" uid="uid://re33bfyy88ar" path="res://scenes/laser.tscn" id="16_22mqa"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6c6bd"]
+texture = ExtResource("2_lgrx1")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_2qmps"]
+scenes/1/scene = ExtResource("3_fhpes")
+scenes/4/scene = ExtResource("11_do6pa")
+scenes/5/scene = ExtResource("12_n8qcm")
+scenes/6/scene = ExtResource("13_aey3y")
+scenes/7/scene = ExtResource("14_k0dme")
+scenes/8/scene = ExtResource("15_o5em7")
+scenes/9/scene = ExtResource("16_22mqa")
+scenes/11/scene = ExtResource("4_vmg1d")
+scenes/12/scene = ExtResource("5_1nwmf")
+scenes/13/scene = ExtResource("6_5f5xw")
+scenes/14/scene = ExtResource("7_o3ttr")
+scenes/15/scene = ExtResource("8_kdsi4")
+scenes/16/scene = ExtResource("9_kva3v")
+scenes/17/scene = ExtResource("10_jql0x")
+
+[sub_resource type="TileSet" id="TileSet_gtyp3"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_6c6bd")
+sources/1 = SubResource("TileSetScenesCollectionSource_2qmps")
+
+[sub_resource type="LabelSettings" id="LabelSettings_lgrx1"]
+font_size = 128
+
+[node name="level_3" type="Node2D"]
+script = ExtResource("1_lgrx1")
+
+[node name="TileMap" parent="." instance=ExtResource("1_josfm")]
+tile_set = SubResource("TileSet_gtyp3")
+layer_0/tile_data = PackedInt32Array(131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0)
+
+[node name="player" parent="." instance=ExtResource("4_vmg1d")]
+
+[node name="door" parent="." instance=ExtResource("13_aey3y")]
+z_index = -1
+position = Vector2(366, 92)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 197.0
+offset_top = -7.0
+offset_right = 270.0
+offset_bottom = 168.0
+text = "3"
+label_settings = SubResource("LabelSettings_lgrx1")

@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://c321vsx22f2ay"]
+
+[ext_resource type="PackedScene" uid="uid://b2ih0e3jyr27u" path="res://scenes/tile_map.tscn" id="1_ksju7"]
+[ext_resource type="Script" uid="uid://cru0cssej48mo" path="res://scripts/level_1.gd" id="1_x42e6"]
+[ext_resource type="PackedScene" uid="uid://l0fc723m6sp6" path="res://scenes/player.tscn" id="2_nsrm0"]
+[ext_resource type="PackedScene" uid="uid://bfjqmwudb7pin" path="res://scenes/door.tscn" id="3_x42e6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x42e6"]
+font_size = 128
+
+[node name="level_1" type="Node2D"]
+script = ExtResource("1_x42e6")
+
+[node name="TileMap" parent="." instance=ExtResource("1_ksju7")]
+layer_0/tile_data = PackedInt32Array(131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0)
+
+[node name="player" parent="." instance=ExtResource("2_nsrm0")]
+
+[node name="door" parent="." instance=ExtResource("3_x42e6")]
+z_index = -1
+position = Vector2(366, 92)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 197.0
+offset_top = -7.0
+offset_right = 270.0
+offset_bottom = 168.0
+text = "1"
+label_settings = SubResource("LabelSettings_x42e6")
